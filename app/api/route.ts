@@ -1,6 +1,5 @@
 import axios from "axios";
 import { NextRequest, NextResponse } from "next/server";
-import { env } from "process";
 
 function getFormattedSize(sizeBytes: number) {
   let size, unit;
@@ -17,10 +16,6 @@ function getFormattedSize(sizeBytes: number) {
   }
 
   return `${size.toFixed(2)} ${unit}`;
-}
-
-if (!env.COOKIE) {
-  throw new Error("Missing COOKIE in env");
 }
 
 interface ResponseData {
@@ -65,7 +60,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
       "sec-ch-ua":
         '"Not A(Brand";v="99", "Google Chrome";v="121", "Chromium";v="121"',
-      Cookie: env.COOKIE,
+      Cookie: "PANWEB=1; csrfToken=; lang=en; TSID=; __bid_n=; _ga=; __stripe_mid=; ndus=; browserid==; ndut_fmt=; _ga_06ZNKL8C2E=",
       "sec-ch-ua-mobile": "?0",
       "sec-ch-ua-platform": '"Windows"',
     },
